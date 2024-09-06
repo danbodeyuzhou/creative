@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本显示</title>
+    <style>
+        #input-text {
+            width: 100%;
+            resize: both;
+            overflow: hidden;
+            box-sizing: border-box;
+	    font-family: inherit;
+        }
+    </style>
+    <script>
+        // 当页面加载时，初始化输入框和显示内容
+        window.onload = function() {
+            document.getElementById('display-info').innerText = localStorage.getItem('input-info') || '无标题';
+            document.getElementById('input-text').value = localStorage.getItem('input-text') || '';
+            updateCharCount();
+            displayButtons();
+            autoResize();
+        };
+
+        // 更新字符计数
+        function updateCharCount() {
+            const inputText = document.getElementById('input-text').value;
+            document.getElementById('char-count').innerText = `字符数： ${inputText.length}`;
+        }
+
+        // 自动调整文本框大小
+        function autoResize() {
+            const inputText = document.getElementById('input-text');
+            inputText.style.height = 'auto';
+            inputText.style.height = inputText.scrollHeight + 'px';
+        }
+
+        // 显示按钮
+        function displayButtons() {
+            const cancelText = localStorage.getItem('button-cancel');
+            const continueText = localStorage.getItem('button-continue');
+
+            if (cancelText) {
+                const cancelButton = document.createElement('button');
+                cancelButton.innerText = cancelText;
+                cancelButton.onclick = function() {
+                    localStorage.setItem('iframe-close', '1');
+                    window.close();
+                };
+                document.body.appendChild(cancelButton);
+            }
+
+            if (continueText) {
+                const continueButton = document.createElement('button');
+                continueButton.innerText = continueText;
+                continueButton.onclick = function() {
+                    const inputText = document.getElementById('input-text').value;
+                    localStorage.setItem('input-text', inputText);
+                    localStorage.setItem('iframe-close', '1');
+                    window.close();
+                };
+                document.body.appendChild(continueButton);
+            }
+        }
+    </script>
+</head>
+<body>
+    <p id="display-info"></p>
+    <textarea id="input-text" oninput="autoResize(); updateCharCount();"></textarea>
+    <p id="char-count"></p>
+</body>
+</html>
