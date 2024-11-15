@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <!-- We only include this to explicitly loosen the CSP of various packager environments. It does not provide any security. -->
   <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: blob:">
-  <title>等待打开网页</title>
+  <title>在线页面跳转</title>
   <style>
     body {
       color: #ffffff;
@@ -162,7 +162,7 @@
     <noscript>Enable JavaScript</noscript>
     
     
-    
+    <div class="progress-bar-outer"><div class="progress-bar-inner" id="loading-inner"></div></div>
   </div>
 
   <div id="error" class="screen" hidden>
@@ -258,7 +258,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
       vm.setTurboMode(false);
       if (vm.setInterpolation) vm.setInterpolation(false);
-      if (vm.setFramerate) vm.setFramerate(1);
+      if (vm.setFramerate) vm.setFramerate(30);
       if (vm.renderer.setUseHighQualityRender) vm.renderer.setUseHighQualityRender(false);
       if (vm.setRuntimeOptions) vm.setRuntimeOptions({
         fencing: true,
@@ -310,7 +310,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
           ), true);
         }
       };
-      let projectDecodeBuffer = new ArrayBuffer(1748);
+      let projectDecodeBuffer = new ArrayBuffer(1832);
       let projectDecodeIndex = 0;
       const decodeChunk = (size) => {
         try {
@@ -318,12 +318,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
           base85decode(document.currentScript.getAttribute("data"), projectDecodeBuffer, projectDecodeIndex);
           document.currentScript.remove();
           projectDecodeIndex += size;
-          setProgress(interpolate(0.1, 0.75, projectDecodeIndex / 1745));
+          setProgress(interpolate(0.1, 0.75, projectDecodeIndex / 1831));
         } catch (e) {
           handleError(e);
         }
       };
-      </script><script data="wC_B+4****2****(:`rip:y,+.X}G,6rA+*b*DlNwLKzIUF*2OP,wUE76`_;yZkES_Vma`MVNd8?duI8Ij^^@:Wr=fK+6G0p@WI7glm*jQm@(Rqe;/]m{d7C`D=:TI26N=xPlnv4jx(0.jWjLGsz@;:@RZ-l[]ULLfT_+Ox=Jm/b@(6[(Tsc/bOt{sBZc2k|PUH3/qefK}]BCqJiHt8qzc/OPuFBvijBJ|E\S7ZpWOd|TE={t+7x=,v6;|]I=CJ)OBe5SAR+3{m7T@fi26+.]IkMEOrcgkIXBt/g-^P-}e9X/D.QjY=?LaZ)u2,UsP9GJS0]JtzS3`^Qv;WDLm~8KC2wxmFIh;;soJX2wDW^_/e4rdxFy[u,{eYou8`]zpa=r{qQT]^)1Wgu6`OC,1Ua*GFv1I20[G/Xo4v=feBpbSK|ZWwIaba7.:`9zx[`,?.NV)b`@sRR^yaOPa[xWet9v(wP`]*1JUjiVnTx@J5=XK7)1cG/FoWGY5k.*Ojhc5*d-qP^+P^)3?3L8XzMM7*]YY52pe5bBmoXeD3(f6vu(CE8X1u7piE;Q1.(zs^gN^[S}_[SX()WvAu,^koARqG,7Zf[-~T0o@yv.ZMet2EgJKG6y;H1a?D0EYm\2r*+tdpEu~})RFE4x7l{9x+?y{O4.~`aNpXWdQ\}s4gXfTg1wZmEhRLz7IyHHCFdGnRpqDOty]@fv49)X9bh5-`;p6,w{4QE{r}mxxw*aSN/YmP2baad4K9[}pd3spvb:4qcVk4k,rOttJR.CK|jQwhOZJp|-MB~fWt{@:xj/n,2/5Z7p,KYx?\)b?izHw_c3`2B9tXoG.aKFIEJzDt;GCyK5b1MqSg3ib-*FN[)S~3`:Q:DyqvG,plBahN3)/p+Tk.~EA;Y+l`tezpSxAfpTR[*g;+[IZDOg*7`,,Ps_O,kp6`.s(kEYJe(=~eRHd1BF:y_\D/O4*o9UC?UR;Ahe3P;[+6q~5E.0B*]*W[fOr[?.u|`G6H_Aki@^uO*@@GP~\pwSKiseQayJf[ykmDx|g|o`5y\J22PNBFn|~e1Qa8M|:l;jaMy/r5Tkyosg7yy=Q~.+8H***2B***PxBoUH?~)YJMMxjNoRZ58TZoI|s62;y**Y9*2lqJh=9_IFLbS9YdIVJ7`d@J{[-w8)-n7MTXC4TaDfnQKErR,?OSMh6?mzlk]/VT[e2;a^Wh:GQ7Xt9{aS5o7Zg1^3H(djAt`i=K~inS3O=0d7eLRO*3OBYL1TwBI~eu@mo`tKg+@UwzoWy-jYp]DFF{m^}^DC]ccW6bVE]=`qfnCiuL-zrXgpc3TbDQrvYUy+VGL]++^0`__9SXBroIMBE_P;B;r/+*2Zr**r-OtD}nTnk;.***U0***N****3n{yI~k9)I~9mh;]vvqJ[DyR;UyCo92BzyI8o(wJTGS?K-Qw7CAv~jfSj|baX~J0)(Y7h/@\)|);clDLP3|3Z@/_MFM)VDI0]+FA:me_?-b|6\cBi`((BYZ[I:JAWr7e})Rx\,U}\3d*oh-*U6Ir-fcWS7bN,Z=`]z|6I(p3M);/nBtX`07Ay;quzB|z\Hi|6RUU3@OwaT-sIC..oTtPG/j7w,Za5G})-2dcQ5kpmZ^yyr(Wh{1Re9_|0t,fO_/NP;O_Sn;}U/y3FeP[{k=gnt(Cv4YR.)jB+coRlJ?FJ~}cc)@K\3B2_;Ovc=QMj.q\=-I6ldQZ.Y)z~mrCijwh-uxOW|,/E011-S4]2j~m4xwH:KN??5wv~/{*,xIJi}UnmcZiRVY~41{xF^u:NHHk-@Nn=fdU{iM)7\If~9Ty{hlk1K6(-GgKceZH2*~b,At3{DbG;-Oi\(~HWku4Gs]RSl]ZR;mLZU(q=E~BQH4LQmS?HM*Jk:(-2rXZ,tre2]UatJeb:G**.Ll**6N******************Etf~M17Z\JE^j4Lv;CrC7D\N04H***2B***PxBoUH?~)YJMMxjNoRZ5***************9aH**yta::Kspk:|syP:7U)wJWEE5:{1lVJX;U7;`,]l:NBx/P.@HM*Jk:(-2rXZ,tre2]Yx~[g]c6**U\=**NA+************`g(H;fyr~;.ssU:WuCCISH3N;ZL8V:_;Gi;+iTYI2qr^IY`\w8v{XqC+^`**-E{{*a`mGq]NR,q/*********">decodeChunk(1745)</script>
+      </script><script data="wC_B+4****2****`LNS01h-6+jnV`,6rA+*b*DlNwLKzIUF*2OP,wUEn7`_;e6+J*Uo;_G7+uCGtIliF]p2MH:Wr=fK+6G0x;VK7(Er*jfthdzaGSpzGMAhNe3=M2[US4s}:rt.(q{xUzjA/oBX3cVrxKDIV:PSu2e^+,@,YemN7Ruc*B]~cmrdQg~K+wKPWfpHH:dbg7xg;Cx6OD_8[W`/EB4Vk8h?MX.gNGMUG.vMavnXiT7),/L]ib{CSQv@Ng]R8duW/TNp^G)R?If9nm-tjI`Sk\K)Oxy+hZW(|y{kzz(xA/nT(tI~t1|0tBYSLUDBNZe@Au\m^St]GSw}YcQupnPazkGFGB=/TIQba}6}|HCHO|tqP=~Z3Id{H(O+..o}kTR{kh[12(~.6j{ZQSY*Yf_t)Cl2daEh4R:NPoxLI(G1_EXJi{l6ow:q*mM+x-Sgk|xPPhR?`UJvCP2GpCZP5tc3uDDTQ~o7hJbjtbe8\]IV}[,+fDxD:3zKFn5XV[qiVTZ+*Yr=yJh,SCM3`)e.tp~w5ALW*kuf*Q=J2{WiQ[z?kv11ifWh)^Om-iMiQ82-jix6eD{_.)6QW[,sEcft0i+HScozh[nnC*yV@9/1N87Mw`ZgxKJyN)ogqE2B:q{5B)aw5(5cA)d+XxAU9=,GDsX.80Pf:1Tfj)ABaruUTh6oWTh6l]ebGKfVJ*[a5Vx9j^\+CaKxcCKicMRRavZQAqlJN?d6Dte}3[oC4W`r))j@=@8QmlmUK.,iB5gf61)X-8:_{=4G]LLS=n}tbAGg9E}`S*Tx_;enGxEOTK)TU23Oc{]Br,cUR(t^Q^u{^k2YS`f{4N-[7{aQb|DPM,\`c-PV/_Fh7R7n(=PE1,17Tgk.mne)-sW_w9jobWVg?b0LbClxVHNB[)Paak=`(@[Y+stxBV/vnN{CHDr.w;7?1G=^5^G6:x5[1D}M-Qzg?biREegC,lhK*vW88b2MJFj,@CNAiT5h3q`rLa(E6-dW4nKG8HjO`t~bzdU)A_;Y=iV2m)3FC82JV|=[X@WbOPyS^1F\V0D8,C}`,g3@x:Z=2)d`(qaUE+Jc:JSzA2mCQ_F_Dn*Tg;_]9rA~}k_+HILs`UQ[Sv+XGKAVt@nm3*qMG:sBr;O+B?0*jKnE|wJY~^fEV8HNeu}mWY-=44u{y0yd|vvoBmvVW+.*GmC1Q^(-2rXZ,tre2]:26L/i;/**J71**NA+**yta::Kspk:|syP:7U)wJWEE5:{1lVJX;U7;`,]l:NBx/PBA9;BE,rQ0:zFAo\[L8bb0abAgnUtchUqMiC+3apA/fyBuFisMtn^`E2w0qcHi0@?cZyrTe+mMM9wUgn.^6wF1h9|]DR}/npp.JZse1DAK5p/tAGde7x)inh.ET`^=Rh2TSVy+coE/7SZN}\GHR;9[9NWAem6SY\^/4k;O]mK((rS.-1Q/;vBc[7*wC_B+4****2****9^3R]rT9P*U3+e*NXq-*n)w)I[8bJ(SxB7;-Jc;JYg.uI4ji/(~KeR;29gR;A0_+Oq{T8Dba6c9=8+`J2jHp(_yf)0ScDT-5kGX\3Xe6@r3)/FDP*)ZtYIWQ2`L^4l6kJQyDl;ELy\dK_iz1KRC@k`u_G{^nE.SXAa+^cMBa_92,4.MTbA5Es0FT`ruh;MEGgNhiz5+Qt53P4ZDsF+4_OBW(TM`/kwY+UbSo{khV~Z@mZU\]Kn2270}C|TY}Sv(p6jE-;)rzAAcSkbSTU*KMdDQ34FsA,;t}n.4{qewdMKKrBG+E2x4q,_dR4Y0GbUE]seCl[7e(.I|`Kw^cZG9ijb|a0\U2P9}?AOUy{mzmhf/{f_hqca/OFiea);Vw{(S^*EJ;*p_DjG:Et{:bhsJ5k@Z;)_XWx8kRocuqIW:F*7c/ab1,a:RW2H:4yAWNvOYuKxM;Zdeg]mBvYH05/gv|I[8GLf:MwtTg}fB`1l({9stw2TSn6^z@J`XgKK+T)xknQlC7D\N04H***2B***LSw;9BYEOWeyr~;)Apr-********************|m]oM|u\LOPbfoM5@HM*Jk:(-2rXZ,tre2]:26L/i;/**J71**NA+************7LHod;TZoI|s62;y**Y9*2lqJh=9_IFLbS9YdIVJ7`d@J{[-w8v{XqC7D\N04H***2B***CW-E6gx.gJTG097PoRZ5***************e)S**z4DCI+.ho9SKEo9.C`::6NR@JZWv2;U[h)I5wd;JSBx/P2d_e+0****0N{{*^s1**c=b*******">decodeChunk(1831)</script>
 
     <script>
       const getProjectData = (function() {
@@ -354,7 +354,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         return () => (() => {
         const buffer = projectDecodeBuffer;
         projectDecodeBuffer = null; // Allow GC
-        return Promise.resolve(new Uint8Array(buffer, 0, 1745));
+        return Promise.resolve(new Uint8Array(buffer, 0, 1831));
       })().then(async (data) => {
           zip = await Scaffolding.JSZip.loadAsync(data);
           const file = findFileInZip('project.json');
