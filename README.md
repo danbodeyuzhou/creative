@@ -6,7 +6,7 @@ Scratch和Turbowarp编程作品
   
 [五子棋/围棋](boardgame)  /-使用云变量，双人联机
 
-[石头剪刀布](rock-paper-scissors)  /-使用云变量，支持双人联机
+[石头剪刀布](rock-paper-scissors)  /-使用云变量，双人联机
   
 ## 实用工具
 [屏幕常亮锁定](tools/wake-lock)(仅PC可用)  /-让电脑屏幕保持常亮   
