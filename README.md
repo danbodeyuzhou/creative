@@ -14,5 +14,5 @@ Scratch和Turbowarp编程作品
 [键鼠锁定](tools/screen-lock)(仅PC可用)  /-锁定键盘鼠标（不能锁定控制键）
 
 ## 更多
-查看[帮助](https://surl.szysite.com/creative-help)  
+查看[帮助](https://www.szysite.com/creative-paint-update)  
     
